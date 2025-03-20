@@ -14,13 +14,11 @@ const coreValuesData = await fetch("https://frontend-design-theme.netlify.app/ap
         <div class="cards">
             {
                 coreValuesData.values.map((value) => (
-                    <>
-                        <div class="card">
-                            <h3>{value.title}</h3>
-                            <p>{value.description}</p>
-                            <a href={value.link.url}>{value.link.text} →</a>
-                        </div>
-                    </>
+                    <div class="card">
+                        <h3>{value.title}</h3>
+                        <p>{value.description}</p>
+                        <a href={value.link.url}>{value.link.text} →</a>
+                    </div>
                 ))
             }
         </div>
@@ -29,18 +27,16 @@ const coreValuesData = await fetch("https://frontend-design-theme.netlify.app/ap
 
 <style>
     @layer components {
-        /* Wrapper for Core Values Sektionen */
         .core-values-wrapper {
-            background-color: var(--primary03-color); /* Sort baggrund */
+            background-color: var(--primary03-color);
         }
 
-        /* Core Values Sektion */
         .core-values {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto auto auto;
+            grid-template-rows: repeat(4, auto);
             gap: 1rem;
-            color: var(--secondary02-color); /* Hvid tekst */
+            color: var(--secondary02-color);
             padding: 5rem 2rem;
             font-family: var(--font-secondary);
             position: relative;
@@ -48,10 +44,14 @@ const coreValuesData = await fetch("https://frontend-design-theme.netlify.app/ap
             margin: 0 auto;
         }
 
-        /* Titel (p) i første række, første kolonne */
+        .core-values p,
+        .core-values h2,
+        .core-values .titel,
+        .core-values .contact-button {
+            grid-column: 1 / -1;
+        }
+
         .core-values .titel {
-            grid-column: 1 / span 2;
-            grid-row: 1;
             font-size: var(--font-size-p);
             text-transform: uppercase;
             background-color: var(--primary01-color);
@@ -62,50 +62,39 @@ const coreValuesData = await fetch("https://frontend-design-theme.netlify.app/ap
             max-width: 16rem;
         }
 
-        /* Hovedoverskrift (h2) i anden række, første kolonne */
         .core-values h2 {
-            grid-column: 1;
-            grid-row: 2;
             font-size: var(--font-size-h2);
             font-weight: var(--font-weight-bold);
             font-family: var(--font-primary);
             margin-bottom: 0.75rem;
-            white-space: nowrap;
         }
 
-        /* Underoverskrift (subtitle p) i tredje række, første kolonne */
         .core-values > p {
-            grid-column: 1;
-            grid-row: 3;
             font-size: var(--font-size-p);
-            color: var(--secondary01-color); /* Lys grå */
+            color: var(--secondary01-color);
             max-width: 600px;
             margin: 0 auto 1rem;
         }
-        /* Cards i fjerde række og strækker sig over begge kolonner */
+
         .cards {
             display: grid;
-            grid-column: 1 / span 4;
-            grid-row: 4;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
-            max-width: 1100px;
             margin: 0 auto;
         }
 
-        /* Individuelle kort */
         .card {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background-color: var(--secondary02-color); /* Hvid */
-            color: var(--primary03-color); /* Sort */
+            background-color: var(--secondary02-color);
+            color: var(--primary03-color);
             padding: 2rem;
             border-radius: 16px;
             text-align: center;
             transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
+                transform 0.3s,
+                box-shadow 0.3s;
             font-family: var(--font-secondary);
         }
 
@@ -114,24 +103,22 @@ const coreValuesData = await fetch("https://frontend-design-theme.netlify.app/ap
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .card h3 {
-            font-size: var(--font-size-h3);
-            font-family: var(--font-primary);
+        .card h3,
+        .card p {
             margin-bottom: 0.75rem;
         }
 
         .card p {
             font-size: var(--font-size-p);
-            color: var(--primary03-color); /* Sort tekst */
+            color: var(--primary03-color);
             line-height: 1.6;
         }
 
-        /* Links i kortene */
         .card a {
             display: inline-block;
             margin-top: 1rem;
             font-weight: var(--font-weight-bold);
-            color: var(--primary01-color); /* Gul */
+            color: var(--primary01-color);
             text-decoration: none;
         }
 
@@ -139,91 +126,56 @@ const coreValuesData = await fetch("https://frontend-design-theme.netlify.app/ap
             text-decoration: underline;
         }
 
-        /* "Contact button" i tredje række, anden kolonne */
         .contact-button {
-            grid-column: 4;
-            grid-row: 3;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 2.5rem;
-            line-height: 1;
             width: 10.4375rem;
-            background-color: var(--secondary02-color); /* Hvid baggrund */
-            color: var(--primary03-color); /* Sort tekst */
+            background-color: var(--secondary02-color);
+            color: var(--primary03-color);
             font-weight: var(--font-weight-bold);
             border-radius: 25px;
             text-decoration: none;
             font-family: var(--font-primary);
             text-align: center;
             transition:
-                transform 0.3s ease,
-                background-color 0.3s ease;
+                transform 0.3s,
+                background-color 0.3s;
         }
 
         .contact-button:hover {
-            background-color: var(--primary01-color); /* Gul */
+            background-color: var(--primary01-color);
             transform: scale(1.05);
         }
 
         /* Responsiv justering */
         @media (max-width: 1024px) {
-            .cards {
-                grid-column: 1;
-                grid-row: 5;
-            }
-
-            .card {
-                width: 80%;
-                margin: 0 auto;
-                padding: 1rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: left;
-            }
-
             .core-values {
                 grid-template-columns: 1fr;
-                grid-template-rows: auto auto auto auto;
             }
 
-            .core-values .titel {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .core-values .titel,
+            .core-values h2 {
                 grid-column: 1;
-                grid-row: 1;
                 text-align: center;
             }
 
-            .core-values h2 {
-                grid-column: 1;
-                grid-row: 2;
-                font-size: var(--font-size-h2);
-                font-weight: var(--font-weight-bold);
-                font-family: var(--font-primary);
-                margin-bottom: 0.75rem;
-                white-space: normal;
-                word-wrap: break-word;
-                overflow-wrap: anywhere;
-            }
-
             .core-values > p {
-                grid-column: 1;
-                grid-row: 3;
                 text-align: left;
                 max-width: 100%;
             }
 
             .contact-button {
-                grid-column: 1;
-                grid-row: 4;
                 margin: 1rem auto 0;
             }
         }
 
         @media (max-width: 600px) {
-            .cards {
-                grid-template-columns: 1fr;
-            }
             .contact-button {
                 position: static;
                 display: block;

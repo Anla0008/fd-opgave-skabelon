@@ -5,45 +5,31 @@ import HeadingButton from "./HeadingButton.astro";
 <section class="contact-section">
     <div class="wrapper">
         <div class="contact">
-            <HeadingButton title="Process" />
+            <HeadingButton title="Experience" variant="primary" />
             <h2 class="contact-title">Contact Us. It's Easy.</h2>
             <p class="contact-description">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative.</p>
             <dl class="contact-info">
-                <div class="contact-item">
-                    <div class="icon-text">
-                        <div class="icon-container">
-                            <img src="src/icons/call-today.svg" alt="Phone Icon" />
+                {
+                    [
+                        { icon: "call-today.svg", label: "Call Today", value: "+1 800 100 900" },
+                        { icon: "monday-friday.svg", label: "Monday To Friday", value: "9AM - 5PM" },
+                        { icon: "adress-grey.svg", label: "USA Office", value: "195 Devonshire St Boston, MA 02110" },
+                    ].map(({ icon, label, value }) => (
+                        <div class="contact-item">
+                            <div class="icon-text">
+                                <div class="icon-container">
+                                    <img src={`src/icons/${icon}`} alt={`${label} Icon`} />
+                                </div>
+                                <div class="dt-dd-container">
+                                    <dt>{label}</dt>
+                                    <dd>
+                                        <strong>{value}</strong>
+                                    </dd>
+                                </div>
+                            </div>
                         </div>
-                        <div class="dt-dd-container">
-                            <dt>Call Today</dt>
-                            <dd><strong>+1 800 100 900</strong></dd>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="icon-text">
-                        <div class="icon-container">
-                            <img src="src/icons/monday-friday.svg" alt="Clock Icon" />
-                        </div>
-                        <div class="dt-dd-container">
-                            <dt>Monday To Friday</dt>
-                            <dd><strong>9AM - 5PM</strong></dd>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="icon-text">
-                        <div class="icon-container">
-                            <img src="src/icons/adress-grey.svg" alt="Location Icon" />
-                        </div>
-                        <div class="dt-dd-container">
-                            <dt>USA Office</dt>
-                            <dd>
-                                <strong>195 Devonshire St Boston, MA 02110</strong>
-                            </dd>
-                        </div>
-                    </div>
-                </div>
+                    ))
+                }
             </dl>
         </div>
 
@@ -68,51 +54,80 @@ import HeadingButton from "./HeadingButton.astro";
             justify-content: center;
             align-items: center;
             margin: 1rem;
+
+            .wrapper {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                max-width: 1200px;
+                width: 100%;
+
+                .contact {
+                    .contact-title {
+                        font-size: var(--font-size-h2);
+                        margin-bottom: 1rem;
+                    }
+
+                    .contact-description {
+                        font-size: var(--font-size-p);
+                        margin-bottom: 2rem;
+                        max-width: 43ch;
+                    }
+
+                    .contact-info {
+                        display: grid;
+                        gap: 1.5rem;
+
+                        .contact-item {
+                            .icon-text {
+                                display: flex;
+                                align-items: center;
+                                gap: 1rem;
+
+                                .icon-container {
+                                    width: 2rem;
+                                    height: 2rem;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+
+                                .dt-dd-container {
+                                    display: flex;
+                                    flex-direction: column;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .image-container {
+                    display: grid;
+                    gap: 1.5rem;
+                    grid-template-areas: "large-img small-img";
+                    align-items: center;
+
+                    .large-img {
+                        img {
+                            width: 100%;
+                            border-radius: 1.5rem;
+                        }
+                    }
+
+                    .small-img {
+                        display: grid;
+                        gap: 1.5rem;
+                        grid-template-columns: 1fr;
+                        img {
+                            width: 100%;
+                            border-radius: 1.5rem;
+                        }
+                    }
+                }
+            }
         }
 
-        .wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .contact-title {
-            font-size: var(--font-size-h2);
-            margin-bottom: 1rem;
-        }
-
-        .contact-description {
-            font-size: var(--font-size-p);
-            margin-bottom: 2rem;
-            max-width: 43ch;
-        }
-
-        .contact-info {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .icon-container {
-            width: 2rem;
-            height: 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .icon-text {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .dt-dd-container {
-            display: flex;
-            flex-direction: column;
-        }
-
+        // Styling for dl, dt, dd
         dl {
             margin-top: 2rem;
         }
@@ -123,49 +138,25 @@ import HeadingButton from "./HeadingButton.astro";
             color: var(--color-primary3);
         }
 
-        .image-container {
-            display: grid;
-            gap: 1.5rem;
-            grid-template-areas: "large-img small-img";
-            align-items: center;
-        }
-
-        .large-img img {
-            width: 100%;
-            border-radius: 1.5rem;
-            grid-area: large-img;
-        }
-
-        .small-img {
-            display: grid;
-            gap: 1.5rem;
-            grid-template-columns: 1fr;
-            grid-area: small-img;
-        }
-
-        .small-img img {
-            width: 100%;
-            border-radius: 1.5rem;
-        }
-
+        // Responsive adjustments
         @media (max-width: 900px) {
             .wrapper {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            }
 
-            .contact-info {
-                text-align: center;
-            }
+                .contact-info {
+                    text-align: center;
+                }
 
-            .image-container {
-                grid-template-areas:
-                    "large-img"
-                    "small-img";
-            }
+                .image-container {
+                    grid-template-areas:
+                        "large-img"
+                        "small-img";
 
-            .small-img {
-                grid-template-columns: 1fr 1fr;
+                    .small-img {
+                        grid-template-columns: 1fr 1fr;
+                    }
+                }
             }
         }
     }

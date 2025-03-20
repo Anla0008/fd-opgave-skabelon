@@ -22,71 +22,83 @@
             margin: 2rem auto;
             position: relative;
             overflow: hidden;
+
+            /* Nested selectors */
+            .figure {
+                position: absolute;
+                bottom: -15rem;
+                right: -7rem;
+                width: 14.16294rem;
+                height: 17.80919rem;
+                transform: rotate(135deg);
+                flex-shrink: 0;
+                border-radius: 1.25rem;
+                background: #4eaf4e;
+                z-index: 10;
+            }
+
+            img {
+                position: absolute;
+                top: -12rem;
+                right: -15.5rem;
+                width: 22.59619rem;
+                height: 22.59631rem;
+                transform: rotate(43.687deg);
+                flex-shrink: 0;
+                z-index: 8;
+            }
+
+            .newsletter-grid {
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                gap: 1rem;
+                align-items: center;
+
+                /* Input and button styling */
+                input[type="email"] {
+                    grid-column: span 2;
+                    padding: 0.8rem;
+                    border: 1px solid var(--secondary01-color);
+                    border-radius: 3.375rem;
+                    background-color: var(--secondary02-color); /* Hvid baggrund */
+                    color: var(--primary03-color); /* Sort tekst */
+                }
+
+                button {
+                    grid-column: span 1;
+                    padding: 0.8rem 1rem;
+                    color: var(--primary03-color); /* Sort tekst */
+                    background-color: var(--primary01-color); /* Gul baggrund */
+                    border: none;
+                    border-radius: 3.375rem;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                    z-index: 9;
+
+                    &:hover {
+                        background-color: var(--primary02-color); /* Mørkere gul ved hover */
+                    }
+                }
+            }
+
+            /* Newsletter content styles */
+            .newsletter-content {
+                grid-column: span 3;
+
+                h4 {
+                    margin: 0;
+                    color: var(--secondary02-color); /* Hvid tekst */
+                }
+
+                p {
+                    margin: 0.5rem 0 0;
+                }
+            }
         }
 
-        .figure {
-            position: absolute;
-            bottom: -15rem;
-            right: -7rem;
-            width: 14.16294rem;
-            height: 17.80919rem;
-            transform: rotate(135deg);
-            flex-shrink: 0;
-            border-radius: 1.25rem;
-            background: #4eaf4e;
-            z-index: 10;
-        }
-
-        img {
-            position: absolute;
-            top: -12rem;
-            right: -15.5rem;
-            width: 22.59619rem;
-            height: 22.59631rem;
-            transform: rotate(43.687deg);
-            flex-shrink: 0;
-            z-index: 8;
-        }
-
-        .newsletter-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .newsletter-content {
-            grid-column: span 3;
-        }
-
-        .newsletter-content h4 {
-            margin: 0;
-            color: var(--secondary02-color); /* Hvid tekst */
-        }
-
-        .newsletter-content p {
-            margin: 0.5rem 0 0;
-        }
-
-        .newsletter-grid input[type="email"] {
-            grid-column: span 2;
-            padding: 0.8rem;
-            border: 1px solid var(--secondary01-color);
-            border-radius: 3.375rem;
-            background-color: var(--secondary02-color); /* Hvid baggrund */
-            color: var(--primary03-color); /* Sort tekst */
-        }
-
-        .newsletter-grid button {
-            grid-column: span 1;
-            padding: 0.8rem 1rem;
-            color: var(--primary03-color); /* Sort tekst */
-            background-color: var(--primary01-color); /* Gul baggrund */
-            border: none;
-            border-radius: 3.375rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            z-index: 9;
+        /* Global styles for form input */
+        * {
+            box-sizing: border-box;
         }
     }
 </style>

@@ -2,41 +2,42 @@
 const { variant } = Astro.props;
 ---
 
-<button class={variant}>
+<button class={`button ${variant}`}>
   <slot />
 </button>
 
 <style>
-  @layper components {
-    .primary {
+  @layer components {
+    .button {
       border-radius: 1.25rem;
+      padding: 0.25rem 1rem;
       place-self: center;
-      padding: 0.25rem 1rem;
-      color: var(--primary03-color);
-      background: var(--primary01-color);
-    }
-    .primary:hover {
-      background-color: #ffe5a2;
-    }
+      font-family: var(--font-primary);
+      font-weight: var(--font-weight-bold);
 
-    .secondary {
-      border-radius: 1.25rem;
-      place-self: center;
-      padding: 0.25rem 1rem;
-      color: var(--secondary02-color);
-      background: var(--primary03-color);
-    }
+      &.primary {
+        color: var(--primary03-color);
+        background: var(--primary01-color);
 
-    .secondary:hover {
-      background-color: var(--secondary02-color);
-      color: var(--primary03-color);
-    }
+        &:hover {
+          background-color: var(--primary-hover, #ffe5a2);
+        }
+      }
 
-    .tertiary {
-      border-radius: 1.25rem;
-      padding: 0.25rem 1rem;
-      color: var(--primary03-color);
-      background: var(--secondary02-color);
+      &.secondary {
+        color: var(--primary03-color);
+        background: var(--secondary02-color);
+
+        &:hover {
+          background-color: var(--secondary02-color);
+          color: var(--primary03-color);
+        }
+      }
+
+      &.tertiary {
+        color: var(--primary03-color);
+        background: var(--secondary02-color);
+      }
     }
   }
 </style>

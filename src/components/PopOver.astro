@@ -1,16 +1,10 @@
----
-
----
-
 <button popovertarget="popup" class="loginbtn">Login</button>
 
 <div popover id="popup">
     <h4>Dashboard Login</h4>
     <form action="/submit-form" method="POST">
         <input value="Enter Email" type="text" name="name" required />
-
         <input value="Enter Password" type="email" name="email" required />
-
         <input class="submit" type="submit" value="Go to dashboard" name="Show Dashboard" />
     </form>
 </div>
@@ -28,15 +22,15 @@
             }
 
             &::backdrop {
-                background: black;
-                backdrop-filter: blur(50px);
+                background: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(8px); /* Mildere blur-effekt */
             }
 
             &:popover-open {
                 opacity: 1;
 
                 &::backdrop {
-                    opacity: 0.5;
+                    opacity: 0.6; /* Mildere opacity for backdrop */
                 }
             }
 
@@ -55,11 +49,13 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-            padding: 40px 60px 60px 60px;
-            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.9);
             margin: auto;
-            border-radius: 29px;
-            color: var(--secondary02-color); /* Hvid skrift */
+            border-radius: 12px; /* Mere moderne og mindre skarpe kanter */
+            color: var(--secondary02-color); /* Hvid tekst */
+            max-width: 400px; /* Begræns popupens bredde */
+            width: 100%;
         }
 
         /* Form styling */
@@ -74,33 +70,58 @@
 
         /* Titel-styling */
         #popup h4 {
-            color: var(--secondary02-color); /* Hvid skrift */
+            color: var(--secondary02-color); /* Hvid tekst */
             text-align: center;
             font-family: var(--font-primary);
             font-size: var(--font-size-h4);
             font-weight: var(--font-weight-bold);
+            margin-bottom: 20px;
         }
 
         /* Knapper */
         .loginbtn,
         .submit {
             background: var(--primary01-color) !important; /* Gul baggrund */
-            color: var(--primary03-color); /* Sort skrift */
+            color: var(--primary03-color); /* Sort tekst */
             display: inline-block;
-            padding: 10px 30px;
+            padding: 12px 30px;
             border-radius: 42px;
             border: 2px solid transparent;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-weight: bold;
         }
 
         /* Input felter */
         input {
             display: flex;
             background: var(--secondary01-color); /* Lys grå baggrund */
-            padding: 10px 30px;
+            padding: 12px 20px;
             color: var(--primary03-color); /* Sort tekst */
-            border: none;
+            border: 1px solid var(--primary01-color); /* Border som matcher knapper */
+            border-radius: 8px;
+            font-size: var(--font-size-body);
+            width: 100%;
+        }
+
+        /* Input felt fokus-effekt */
+        input:focus {
+            outline: none;
+            border-color: var(--primary01-color);
+        }
+
+        /* Responsivt design: Mobile first */
+        @media (max-width: 600px) {
+            #popup {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            .loginbtn,
+            .submit,
+            input {
+                width: 100%; /* Knapperne fylder hele bredden på mobil */
+            }
         }
     }
 </style>

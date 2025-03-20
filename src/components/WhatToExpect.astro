@@ -3,8 +3,6 @@
 ---
 
 <section class="what-to-expect">
-    <!-- <figure class="figure"></figure>
-    <img class="moenster" src="public/gallery/pattern.svg" alt="moenster" /> -->
     <img src="public/gallery/whatToExpectPic.svg" alt="WhatToExpectPic" />
     <div class="container">
         <p class="titel">WE'LL WORK WITH YOU</p>
@@ -26,24 +24,24 @@
         }
 
         section {
-            position: relative;
             display: inline-flex;
             align-items: flex-start;
             gap: 5.125rem;
             margin: 5rem 2rem;
 
+            /* Nested container styles */
             .container {
                 flex-direction: column;
                 max-width: 30.0625rem;
+                z-index: 2;
             }
 
             .titel {
                 background-color: var(--primary01-color);
                 border-radius: 15px;
-                max-width: 100%;
-                width: auto;
-
                 padding: 0rem 0.75rem;
+                color: var(--secondary02-color); /* hvid */
+                width: auto;
             }
 
             ul.points {
@@ -53,55 +51,34 @@
                 padding: 0;
                 margin: 0;
                 list-style: none;
-            }
 
-            li {
-                display: grid;
-                grid-template-columns: auto 1fr;
-                gap: 1rem;
-                font-size: 1rem;
-                color: #595566;
-            }
+                /* Target li elements directly under ul.points */
+                li {
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    gap: 1rem;
+                    font-size: 1rem;
+                    color: #595566;
+                }
 
-            li:before {
-                content: "";
-                width: 1.6rem;
-                height: auto;
-                background: var(--checkmark-icon) 50% 50% / 100% auto no-repeat;
-                background-position: 50%;
-                background-size: 100% auto;
+                /* Use li:before for custom bullet styling */
+                li:before {
+                    content: "";
+                    width: 1.6rem;
+                    height: auto;
+                    background: var(--checkmark-icon) 50% 50% / 100% auto no-repeat;
+                    background-position: 50%;
+                    background-size: 100% auto;
+                }
             }
 
             img {
                 border-radius: 25px;
                 z-index: 10;
             }
-
-            /* .figure {
-                position: absolute;
-                bottom: 16rem;
-                right: 60rem;
-                width: 10.25rem;
-                height: 11.4375rem;
-                transform: rotate(-90deg);
-                flex-shrink: 0;
-                border-radius: 1.25rem;
-                background: #4eaf4e;
-                z-index: 9;
-            }
-
-            .moenster {
-                position: absolute;
-                bottom: 14rem;
-                right: 58rem;
-                width: 12.25rem;
-                height: auto;
-                transform: rotate(-90deg);
-                flex-shrink: 0;
-                z-index: 8;
-            } */
         }
 
+        /* Responsiv justering */
         @media (width<600px) {
             section {
                 flex-direction: column;
@@ -109,6 +86,10 @@
             }
             .container {
                 width: 100%;
+            }
+            img {
+                width: 100%;
+                height: auto;
             }
         }
     }

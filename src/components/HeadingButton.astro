@@ -1,13 +1,11 @@
 ---
-const { title, textColor, backgroundColor } = Astro.props;
+const { title, textColor, backgroundColor, variant } = Astro.props;
+
+// Definerer standardværdi for variant hvis ikke angivet
+const buttonVariant = variant || "primary"; // 'primary', 'secondary', 'tertiary'
 ---
 
-<div
-    style={{
-        color: textColor,
-        background: backgroundColor,
-    }}
->
+<div class={buttonVariant}>
     {title}
 </div>
 
@@ -20,13 +18,28 @@ const { title, textColor, backgroundColor } = Astro.props;
         align-items: flex-start;
         gap: 0.625rem;
         border-radius: 1.25rem;
-        background-color: var(--primary01-color);
-        color: var(--primary03-color);
-
         font-style: normal;
         font-weight: var(--font-weight-regular);
         line-height: var(--line-height-p);
         letter-spacing: 0.145rem;
         text-transform: uppercase;
+    }
+
+    /* Primary (Gul med sort tekst) */
+    .primary {
+        background-color: var(--primary01-color); /* Gul baggrund */
+        color: black;
+    }
+
+    /* Secondary (Hvid med sort tekst) */
+    .secondary {
+        background-color: white;
+        color: black;
+    }
+
+    /* Tertiary (Grøn med hvid tekst) */
+    .tertiary {
+        background-color: var(--secondary01-color); /* Grøn baggrund */
+        color: white;
     }
 </style>

@@ -1,106 +1,102 @@
 ---
 import HeadingButton from "./HeadingButton.astro";
-
 //@ts-nocheck
 const experienceData = await fetch("https://frontend-design-theme.netlify.app/api/experience").then((response) => response.json());
 ---
 
 <section>
     <div class="info">
-        <HeadingButton title="Experience" textColor="var(--primary03-color)" backgroundColor="var(--secondary02-color)" />
+        <HeadingButton title="Experience" variant="secondary" />
         <h2>{experienceData.heading}</h2>
         <p>{experienceData.subheading}</p>
     </div>
     <div class="stats">
         {
             experienceData.stats.map((oplevelse) => (
-                <>
-                    <div class="cirkel">
-                        <div class="stat" style={`--percent: ${oplevelse.value}`} data-percent={`${oplevelse.value}`} />
-                        <div class="stat-label">{oplevelse.label}</div>
-                    </div>
-                </>
+                <div class="cirkel" key={oplevelse.label}>
+                    <div class="stat" style={`--percent: ${oplevelse.value}`} data-percent={`${oplevelse.value}`} />
+                    <div class="stat-label">{oplevelse.label}</div>
+                </div>
             ))
         }
     </div>
 </section>
 
 <style>
-    section {
-        background-color: var(--primary01-color);
-        display: grid;
-        margin: 0 auto;
-        gap: 1rem;
-        padding: clamp(1rem, 4vw, 2rem);
-
-        grid-template-columns: 1fr;
-        @media (min-width: 600px) {
-            grid-template-columns: 1fr 1fr;
+    @layer components {
+        section {
+            background-color: var(--primary01-color);
+            display: grid;
+            margin: 0 auto;
+            gap: 1rem;
+            padding: clamp(1rem, 4vw, 2rem);
+            grid-template-columns: 1fr;
+            @media (min-width: 600px) {
+                grid-template-columns: 1fr 1fr;
+            }
         }
-    }
 
-    .info {
-        font-weight: var(--font-weight-bold);
-    }
+        .info {
+            font-weight: var(--font-weight-bold);
+        }
 
-    .stats {
-        display: flex;
-        justify-content: center;
-        gap: clamp(1rem, 5%, 5rem);
-    }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: clamp(1rem, 5%, 5rem);
+        }
 
-    .stat {
-        --p: calc(var(--percent) * 1%);
-        --border-width: 5px;
-        --border-color: #ffffff;
-        --border-bg: #daae3c;
+        .stat {
+            --p: calc(var(--percent) * 1%);
+            --border-width: 5px;
+            --border-color: #ffffff;
+            --border-bg: #daae3c;
+            aspect-ratio: 1;
+            width: clamp(100px, 20vw, 185px);
+            border-radius: 50%;
+            border: var(--border-width) solid #0000;
+            background:
+                radial-gradient(circle at 50% calc(var(--border-width) / 2), var(--border-color) calc(var(--border-width) / 2), transparent 0) border-box,
+                linear-gradient(var(--border-bg) 0 0) padding-box,
+                conic-gradient(var(--border-color) var(--p), var(--border-bg) 0) border-box;
+            display: grid;
+            counter-reset: count var(--percent);
+        }
 
-        aspect-ratio: 1;
-        width: clamp(100px, 20vw, 185px);
-        border-radius: calc(Infinity * 1px); /* Cirkel */
-        border: var(--border-width) solid #0000;
-        background:
-            radial-gradient(circle at 50% calc(var(--border-width) / 2), var(--border-color) calc(var(--border-width) / 2), transparent 0) border-box,
-            linear-gradient(var(--border-bg) 0 0) padding-box,
-            /* Tynd kant */ conic-gradient(var(--border-color) var(--p), var(--border-bg) 0) border-box; /* Procentvisning */
+        .cirkel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-        display: grid;
-        counter-reset: count var(--percent);
-    }
-
-    .cirkel {
-        display: flex;
-        flex-direction: column;
-    }
-    .stat-label {
-        font-size: clamp(1rem, 2.5vw, 1.5rem);
-        text-align: center;
-    }
-
-    /* Prikken */
-    .stat::before {
-        content: "";
-        aspect-ratio: 1;
-        border-radius: 50%;
-        width: calc(var(--border-width) * 3);
-        background: #000;
-        outline: 2px solid #fff;
-        outline-offset: -4px;
-        offset-path: border-box;
-        offset-distance: var(--p);
-        offset-anchor: 50% calc(50% - var(--border-width) / 2);
-    }
-    /* Procenttekst */
-    .stat::after {
-        content: counter(count) "%";
-        text-align: center;
-        font-size: var(--font-size-h1);
-        font-weight: bold;
-        color: #000;
-
-        @media (width<600px) {
-            font-size: var(--font-size-h5);
+        .stat-label {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
             text-align: center;
+            color: var(--primary03-color); /* Forbedre synligheden */
+        }
+
+        .stat::before {
+            content: "";
+            aspect-ratio: 1;
+            border-radius: 50%;
+            width: calc(var(--border-width) * 3);
+            background: #000;
+            outline: 2px solid #fff;
+            outline-offset: -4px;
+            offset-path: border-box;
+            offset-distance: var(--p);
+            offset-anchor: 50% calc(50% - var(--border-width) / 2);
+        }
+
+        .stat::after {
+            content: counter(count) "%";
+            text-align: center;
+            font-size: var(--font-size-h1);
+            font-weight: bold;
+            color: #000;
+            @media (max-width: 600px) {
+                font-size: var(--font-size-h5);
+            }
         }
     }
 </style>
