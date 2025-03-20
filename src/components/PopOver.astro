@@ -1,0 +1,106 @@
+---
+
+---
+
+<button popovertarget="popup" class="loginbtn">Login</button>
+
+<div popover id="popup">
+    <h4>Dashboard Login</h4>
+    <form action="/submit-form" method="POST">
+        <input value="Enter Email" type="text" name="name" required />
+
+        <input value="Enter Password" type="email" name="email" required />
+
+        <input class="submit" type="submit" value="Go to dashboard" name="Show Dashboard" />
+    </form>
+</div>
+
+<style>
+    @layer components {
+        [popover] {
+            &,
+            &::backdrop {
+                transition:
+                    display 0.5s allow-discrete,
+                    overlay 0.5s allow-discrete,
+                    opacity 0.5s;
+                opacity: 0;
+            }
+
+            &::backdrop {
+                background: black;
+                backdrop-filter: blur(50px);
+            }
+
+            &:popover-open {
+                opacity: 1;
+
+                &::backdrop {
+                    opacity: 0.5;
+                }
+            }
+
+            @starting-style {
+                &:popover-open,
+                &:popover-open::backdrop {
+                    opacity: 0;
+                }
+            }
+        }
+
+        /* Popup container */
+        #popup {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 40px 60px 60px 60px;
+            background: rgba(0, 0, 0, 0.8);
+            margin: auto;
+            border-radius: 29px;
+            color: var(--secondary02-color); /* Hvid skrift */
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* Titel-styling */
+        #popup h4 {
+            color: var(--secondary02-color); /* Hvid skrift */
+            text-align: center;
+            font-family: var(--font-primary);
+            font-size: var(--font-size-h4);
+            font-weight: var(--font-weight-bold);
+        }
+
+        /* Knapper */
+        .loginbtn,
+        .submit {
+            background: var(--primary01-color) !important; /* Gul baggrund */
+            color: var(--primary03-color); /* Sort skrift */
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 42px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Input felter */
+        input {
+            display: flex;
+            background: var(--secondary01-color); /* Lys grå baggrund */
+            padding: 10px 30px;
+            color: var(--primary03-color); /* Sort tekst */
+            border: none;
+        }
+    }
+</style>
