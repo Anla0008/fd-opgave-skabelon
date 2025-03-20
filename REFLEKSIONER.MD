@@ -25,8 +25,8 @@ Jeg stødte på en frustrerende fejl, hvor mine ikoner ikke blev vist korrekt p�
         }
       }
     }
-
     ________________
+
     Jeg har brugt nesting for at holde relaterede styles samlet, hvilket gør koden mere overskuelig og nemmere at læse. Fx ligger .container inde i section, fordi den kun bruges dér.
     @layer hjælper med at organisere CSS’en bedre ved at gruppere mine styles i forskellige lag. Her har jeg placeret komponent-specifik CSS i @layer components, så den ikke konflikter med globale styles.
 
