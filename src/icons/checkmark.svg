@@ -1,0 +1,29 @@
+<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="23" height="23" fill="#F5F5F5"/>
+<g id="Design">
+<path d="M-1407 -1709C-1407 -1710.1 -1406.1 -1711 -1405 -1711H11765C11766.1 -1711 11767 -1710.1 11767 -1709V4158C11767 4159.1 11766.1 4160 11765 4160H-1405C-1406.1 4160 -1407 4159.1 -1407 4158V-1709Z" fill="#969696"/>
+<path d="M-1405 -1710H11765V-1712H-1405V-1710ZM11766 -1709V4158H11768V-1709H11766ZM11765 4159H-1405V4161H11765V4159ZM-1406 4158V-1709H-1408V4158H-1406ZM-1405 4159C-1405.55 4159 -1406 4158.55 -1406 4158H-1408C-1408 4159.66 -1406.66 4161 -1405 4161V4159ZM11766 4158C11766 4158.55 11765.6 4159 11765 4159V4161C11766.7 4161 11768 4159.66 11768 4158H11766ZM11765 -1710C11765.6 -1710 11766 -1709.55 11766 -1709H11768C11768 -1710.66 11766.7 -1712 11765 -1712V-1710ZM-1405 -1712C-1406.66 -1712 -1408 -1710.66 -1408 -1709H-1406C-1406 -1709.55 -1405.55 -1710 -1405 -1710V-1712Z" fill="black" fill-opacity="0.1"/>
+<g id="Home" clip-path="url(#clip0_1_5)">
+<rect width="1920" height="5149" transform="translate(-1067.5 -1190)" fill="white"/>
+<g id="What To Expect">
+<g id="Content">
+<g id="Text">
+<g id="Points">
+<g id="1">
+<g id="Tick">
+<path id="Vector" d="M15.855 8.83838L9.83628 14.5803L6.83203 11.7093" stroke="#4EAF4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M11.3433 21.1426C16.7795 21.1426 21.1865 16.7356 21.1865 11.2993C21.1865 5.86303 16.7795 1.45605 11.3433 1.45605C5.90698 1.45605 1.5 5.86303 1.5 11.2993C1.5 16.7356 5.90698 21.1426 11.3433 21.1426Z" stroke="#4EAF4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_1_5">
+<rect width="1920" height="5149" fill="white" transform="translate(-1067.5 -1190)"/>
+</clipPath>
+</defs>
+</svg>
