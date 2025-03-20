@@ -5,3 +5,4 @@
 
 
 3. Forklar, hvordan du har organiseret din CSS; hvornår er det globalt, og hvornår er det komponent-specifikt.
+
