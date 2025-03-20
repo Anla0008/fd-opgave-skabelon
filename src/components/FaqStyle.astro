@@ -1,0 +1,82 @@
+---
+const { title, body, data, id } = Astro.props;
+---
+
+<div class="faq-item">
+    <input type="checkbox" class="faq-toggle" id={id} />
+    <label class="faq-question" for={data}>{title}</label>
+    <div class="faq-answer">
+        <p>{body}</p>
+    </div>
+</div>
+
+<style>
+    p {
+        max-width: 60ch;
+        color: var(--primary03-color); /* Sort tekst */
+        font-size: var(--font-size-p); /* Brødtekst størrelse */
+        font-family: var(--font-secondary); /* Sekundær skrifttype */
+        line-height: var(--line-height-p); /* Linjehøjde */
+    }
+
+    .faq-item {
+        margin-bottom: 20px;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--primary03-color); /* Sort streg mellem spørgsmål */
+    }
+
+    .faq-question {
+        cursor: pointer;
+        font-weight: 600; /* Bold skrift */
+        font-size: var(--font-size-p); /* Overskrift størrelse */
+        font-family: var(--font-primary); /* Primær skrifttype */
+        border: none;
+        background: none;
+        outline: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--primary03-color); /* Sort tekst */
+        position: relative;
+    }
+
+    .faq-answer {
+        display: none;
+        margin-top: 10px;
+    }
+
+    .faq-answer p {
+        margin: 0;
+    }
+
+    .faq-toggle {
+        display: none;
+    }
+
+    .faq-toggle + label::after {
+        content: "+";
+        font-size: 1.5rem;
+        color: var(--primary03-color); /* Sort */
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .faq-toggle:checked + label::after {
+        content: "-";
+    }
+
+    .faq-toggle:checked ~ .faq-answer {
+        display: block;
+    }
+
+    .faq-item:not(:last-child) {
+        border-bottom: 1px solid var(--primary03-color); /* Sort */
+        padding-bottom: 20px;
+    }
+</style>

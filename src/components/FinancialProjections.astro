@@ -1,0 +1,160 @@
+---
+import ArrowRight from "../icons/arrow--right.svg";
+import ArrowLeft from "../icons/arrow-left.svg";
+
+const financialData = await fetch("https://frontend-design-theme.netlify.app/api/financialProjections").then((response) => response.json());
+
+// Importér ikoner dynamisk
+const iconImports = await Promise.all(financialData.values.map((item) => import(`../icons/${item.icon}.svg`).then((module) => module.default)));
+---
+
+<section class="full">
+    <header>
+        <h2>{financialData.title}</h2>
+        <p>{financialData.subtitle}</p>
+        <div class="pile">
+            <ArrowLeft class="pilV" />
+            <ArrowRight class="pilH" />
+        </div>
+    </header>
+
+    <ul role="list">
+        {
+            financialData.values.map((item, index) => {
+                const Icon = iconImports[index];
+                return (
+                    <li>
+                        <Icon />
+                        <h6>{item.title}</h6>
+                        <p>{item.description}</p>
+                    </li>
+                );
+            })
+        }
+    </ul>
+</section>
+
+<ul>
+    <style>
+        @layer components {
+            header {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto 1fr;
+                gap: 1rem;
+            }
+
+            h2 {
+                grid-column: 1/-1;
+                grid-row: 1;
+            }
+
+            p {
+                grid-column: 1;
+                grid-row: 2;
+                max-width: 65ch;
+            }
+
+            .pile {
+                grid-column: 2;
+                grid-row: 2;
+                display: flex;
+                gap: 25px;
+                justify-content: flex-end;
+                margin-right: 10rem;
+            }
+
+            .pile .pilV {
+                background-color: black;
+                color: white;
+                border-radius: 100%;
+                padding: 15px;
+                width: 3.5rem;
+                height: 3.5rem;
+            }
+
+            .pile .pilH {
+                background-color: var(--primary01-color); /* Den gule farve */
+                color: black;
+                border-radius: 100%;
+                padding: 15px;
+                width: 3.5rem;
+                height: 3.5rem;
+            }
+
+            section {
+                padding-block: 4rem;
+                display: grid;
+                grid-template-columns: [full-start] 1fr [content] minmax(0, var(--content-width)) 1fr [full-end];
+                column-gap: 1rem;
+                padding-left: 12rem;
+                overflow: hidden;
+            }
+
+            section > * {
+                grid-column: content;
+            }
+
+            .full {
+                grid-column: full;
+                display: grid;
+                grid-template-columns: inherit;
+                row-gap: 3rem;
+                background-color: var(--secondary01-color);
+            }
+
+            .full > * {
+                grid-column: content;
+            }
+
+            .full > ul {
+                scroll-snap-type: x mandatory;
+                grid-column: full;
+                padding-inline: max(1rem, 50% - var(--content-width) / 2);
+                padding-block-end: 1rem;
+            }
+
+            ul {
+                display: flex;
+                gap: 1rem;
+                overflow-x: auto;
+            }
+
+            ul li {
+                flex-basis: min(400px, 90%);
+                flex-shrink: 0;
+                background: #ebebeb;
+                color: #595566;
+                border-radius: 8px;
+                font-size: 1rem;
+                padding: 2.75rem 2.1875rem;
+                align-self: start;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+                min-height: 250px;
+            }
+
+            @media screen and (max-width: 600px) {
+                .pile {
+                    margin-right: 2rem; /* Reducer marginen på mindre skærme */
+                }
+
+                .pile .pilV,
+                .pile .pilH {
+                    width: 2.5rem; /* Gør dem mindre */
+                    height: 2.5rem;
+                }
+
+                section {
+                    padding-left: 1rem; /* Mindre padding på mobil */
+                }
+
+                ul li {
+                    flex-basis: 90%; /* Brug kun procentbaseret bredde */
+                }
+            }
+        }
+    </style>
+</ul>

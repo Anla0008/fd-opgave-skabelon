@@ -1,0 +1,172 @@
+---
+import HeadingButton from "./HeadingButton.astro";
+---
+
+<section class="contact-section">
+    <div class="wrapper">
+        <div class="contact">
+            <HeadingButton title="Process" />
+            <h2 class="contact-title">Contact Us. It's Easy.</h2>
+            <p class="contact-description">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative.</p>
+            <dl class="contact-info">
+                <div class="contact-item">
+                    <div class="icon-text">
+                        <div class="icon-container">
+                            <img src="src/icons/call-today.svg" alt="Phone Icon" />
+                        </div>
+                        <div class="dt-dd-container">
+                            <dt>Call Today</dt>
+                            <dd><strong>+1 800 100 900</strong></dd>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon-text">
+                        <div class="icon-container">
+                            <img src="src/icons/monday-friday.svg" alt="Clock Icon" />
+                        </div>
+                        <div class="dt-dd-container">
+                            <dt>Monday To Friday</dt>
+                            <dd><strong>9AM - 5PM</strong></dd>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon-text">
+                        <div class="icon-container">
+                            <img src="src/icons/adress-grey.svg" alt="Location Icon" />
+                        </div>
+                        <div class="dt-dd-container">
+                            <dt>USA Office</dt>
+                            <dd>
+                                <strong>195 Devonshire St Boston, MA 02110</strong>
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+            </dl>
+        </div>
+
+        <div class="image-container">
+            <div class="large-img">
+                <img src="/gallery/home2.jpg" alt="Case Image" />
+            </div>
+            <div class="small-img">
+                <img src="/gallery/home3.jpg" alt="Case Image" />
+                <img src="/gallery/home4.jpg" alt="Case Image" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @layer components {
+        .contact-section {
+            background: var(--color-secondary1);
+            padding: 6rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .contact-title {
+            font-size: var(--font-size-h2);
+            margin-bottom: 1rem;
+        }
+
+        .contact-description {
+            font-size: var(--font-size-p);
+            margin-bottom: 2rem;
+            max-width: 43ch;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .icon-container {
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon-text {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .dt-dd-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        dl {
+            margin-top: 2rem;
+        }
+
+        dt,
+        dd {
+            margin: 0;
+            color: var(--color-primary3);
+        }
+
+        .image-container {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-areas: "large-img small-img";
+            align-items: center;
+        }
+
+        .large-img img {
+            width: 100%;
+            border-radius: 1.5rem;
+            grid-area: large-img;
+        }
+
+        .small-img {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+            grid-area: small-img;
+        }
+
+        .small-img img {
+            width: 100%;
+            border-radius: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .image-container {
+                grid-template-areas:
+                    "large-img"
+                    "small-img";
+            }
+
+            .small-img {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+</style>

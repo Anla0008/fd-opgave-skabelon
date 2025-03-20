@@ -1,0 +1,94 @@
+---
+// @ts-nocheck
+import FaqStyle from "../components/FaqStyle.astro";
+
+const faqData = await fetch("https://frontend-design-theme.netlify.app/api/faq").then((response) => response.json());
+---
+
+<div class="faq-wrapper">
+    <section class="faq-container">
+        <h2 class="faq-title">Customer Questions</h2>
+        <div class="faq-inner">
+            {faqData.faq.map((item, index) => <FaqStyle id={`faq-${index}`} title={item.question} body={item.answer} data={`faq-${index}`} />)}
+        </div>
+    </section>
+</div>
+
+<style>
+    .faq-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 4rem 0;
+        width: 100%;
+    }
+
+    .faq-container {
+        background: var(--secondary01-color); /* Lys baggrund */
+        border-radius: 1rem;
+        width: 100%;
+        max-width: 800px;
+        padding: 2rem;
+    }
+
+    .faq-title {
+        font-size: var(--font-size-h3);
+        font-weight: var(--font-weight-bold);
+        text-align: center;
+        margin-bottom: 2rem;
+        color: var(--primary03-color); /* Sort tekst */
+    }
+
+    .faq-inner {
+        width: 100%;
+    }
+
+    .faq-item {
+        margin-bottom: 1rem;
+        background: var(--secondary02-color); /* Hvid baggrund */
+        border-radius: 0.5rem;
+        padding: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .faq-question {
+        font-size: var(--font-size-p);
+        font-weight: var(--font-weight-bold);
+        cursor: pointer;
+        color: var(--primary03-color); /* Sort tekst */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+    }
+
+    .faq-answer {
+        display: none;
+        margin-top: 0.5rem;
+        font-size: var(--font-size-p);
+        color: var(--color-text); /* Grå tekstfarve */
+        line-height: 1.5;
+    }
+
+    .faq-toggle {
+        display: none;
+    }
+
+    .faq-toggle:checked ~ .faq-answer {
+        display: block;
+    }
+
+    .faq-toggle + label::after {
+        content: "+";
+        font-size: 1.5rem;
+        color: var(--primary03-color);
+    }
+
+    .faq-toggle:checked + label::after {
+        content: "-";
+    }
+</style>
