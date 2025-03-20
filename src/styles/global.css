@@ -1,1 +1,76 @@
-/* Globale styles her */
+:root {
+    /* Primære farver */
+    --primary01-color: #ffcc4a; /* Gul */
+    --primary02-color: #4eaf4e; /* Grøn */
+    --primary03-color: #181818; /* Sort */
+
+    /* Sekundære farver */
+    --secondary01-color: #f5f5f5; /* Lys grå */
+    --secondary02-color: #ffffff; /* Hvid */
+
+    /* Ikoner */
+    --checkmark-icon: url("src/icons/checkmark.svg");
+
+    /* Skrifttyper */
+    --font-primary: "Cabin", sans-serif;
+    --font-secondary: "Lato", sans-serif;
+
+    /* Font størrelser med clamp */
+    --font-size-h1: clamp(2rem, 5vw, 3.125rem); /* Minimum 2rem, dynamisk op til 3.125rem */
+    --font-size-h2: clamp(1.75rem, 4.5vw, 2.8125rem);
+    --font-size-h3: clamp(1.5rem, 4vw, 2.5rem);
+    --font-size-h4: clamp(1.375rem, 3.5vw, 2.1875rem);
+    --font-size-h5: clamp(1.25rem, 3vw, 1.875rem);
+    --font-size-h6: clamp(1rem, 2.5vw, 1.5625rem);
+    --font-size-p: clamp(0.875rem, 2vw, 1rem);
+
+    /* Line heights */
+    --line-height-h1: clamp(2.5rem, 6vw, 3.625rem);
+    --line-height-h4: clamp(1.5rem, 4vw, 2.5375rem);
+    --line-height-p: clamp(1.25rem, 3vw, 1.475rem);
+
+    /* Font weights */
+    --font-weight-bold: 700;
+    --font-weight-regular: 400;
+}
+
+/* Overskrifter */
+h1 {
+  font-size: var(--font-size-h1);
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+  font-style: normal;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-h4);
+}
+
+h5 {
+  font-size: var(--font-size-h5);
+}
+
+h6 {
+  font-size: var(--font-size-h6);
+}
+
+/* Brødtekst */
+p {
+  font-size: var(--font-size-p);
+  font-family: var(--font-secondary);
+  line-height: var(--line-height-p);
+  font-style: normal;
+  font-weight: var(--font-weight-regular);
+}

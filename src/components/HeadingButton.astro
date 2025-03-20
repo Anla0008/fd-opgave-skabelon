@@ -1,0 +1,32 @@
+---
+const { title, textColor, backgroundColor } = Astro.props;
+---
+
+<div
+    style={{
+        color: textColor,
+        background: backgroundColor,
+    }}
+>
+    {title}
+</div>
+
+<style>
+    div {
+        display: inline-flex;
+        height: fit-content;
+        width: fit-content;
+        padding: 0rem 0.9375rem;
+        align-items: flex-start;
+        gap: 0.625rem;
+        border-radius: 1.25rem;
+        background-color: var(--primary01-color);
+        color: var(--primary03-color);
+
+        font-style: normal;
+        font-weight: var(--font-weight-regular);
+        line-height: var(--line-height-p);
+        letter-spacing: 0.145rem;
+        text-transform: uppercase;
+    }
+</style>
