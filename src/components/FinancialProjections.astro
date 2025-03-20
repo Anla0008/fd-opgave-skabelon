@@ -1,6 +1,11 @@
 ---
-//@ts-nocheck
+import ArrowRight from "../icons/arrow--right.svg";
+import ArrowLeft from "../icons/arrow-left.svg";
+
 const financialData = await fetch("https://frontend-design-theme.netlify.app/api/financialProjections").then((response) => response.json());
+
+// Importér ikoner dynamisk
+const iconImports = await Promise.all(financialData.values.map((item) => import(`../icons/${item.icon}.svg`).then((module) => module.default)));
 ---
 
 <section class="full">
@@ -8,22 +13,23 @@ const financialData = await fetch("https://frontend-design-theme.netlify.app/api
         <h2>{financialData.title}</h2>
         <p>{financialData.subtitle}</p>
         <div class="pile">
-            {/* Brug statiske links til ikoner */}
-            <img src="/icons/arrow-left.svg" class="pilV" alt="Arrow Left" />
-            <img src="/icons/arrow--right.svg" class="pilH" alt="Arrow Right" />
+            <ArrowLeft class="pilV" />
+            <ArrowRight class="pilH" />
         </div>
     </header>
 
     <ul role="list">
         {
-            financialData.values.map((item) => (
-                <li key={item.id}>
-                    {/* Brug statiske links til ikoner */}
-                    <img src={`/icons/${item.icon}.svg`} alt={`${item.title} Icon`} />
-                    <h6>{item.title}</h6>
-                    <p>{item.description}</p>
-                </li>
-            ))
+            financialData.values.map((item, index) => {
+                const Icon = iconImports[index];
+                return (
+                    <li>
+                        <Icon />
+                        <h6>{item.title}</h6>
+                        <p>{item.description}</p>
+                    </li>
+                );
+            })
         }
     </ul>
 </section>
@@ -95,10 +101,6 @@ const financialData = await fetch("https://frontend-design-theme.netlify.app/api
         .pilV {
             background-color: black;
             color: white;
-        }
-        ul li img {
-            max-width: 2.5rem;
-            height: auto;
         }
 
         ul {
